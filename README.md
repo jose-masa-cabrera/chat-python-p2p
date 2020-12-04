@@ -30,5 +30,5 @@ python3 peertopeer.py <IP> <PORT_SERVER> <PORT_CLIENT>
 
 ## Licencia 
 
-_GNU GPL3.0_
+_GNU GPL 3.0_
 
