@@ -10,9 +10,9 @@ _A Peer-to-Peer chatting application created in python_
 
 ## BUILDING WITH
 
-* - Python v3
-* - Module socket
-* - Module select
+* Python v3
+* Module socket
+* Module select
 
 
 ## Licencia 
