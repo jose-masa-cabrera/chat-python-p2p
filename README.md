@@ -4,10 +4,13 @@ _A Peer-to-Peer chatting application created in Python_
 
 ## Features
 
-*Server that provides a list of peers that are in the chat 
-*Communication between peers is done through sockets
-*Real time monitoring
-*Protocol used: UDP
+*Server that provides a list of peers that are in the chat.
+
+*Communication between peers is done through sockets.
+
+*Real time monitoring.
+
+*Protocol used: UDP.
 
 ## Getting started
 
