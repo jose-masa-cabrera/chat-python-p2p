@@ -21,6 +21,8 @@ python3 peertopeer.py <IP> <PORT_SERVER> <PORT_CLIENT>
 ## SCRENSHOT
 
 ![](https://github.com/jose-masa-cabrera/chat-python-p2p/blob/main/images/image1.png)
+![](https://github.com/jose-masa-cabrera/chat-python-p2p/blob/main/images/image2.png)
+![](https://github.com/jose-masa-cabrera/chat-python-p2p/blob/main/images/image3.png)
 
 ## BUILDING WITH
 
