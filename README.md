@@ -23,9 +23,11 @@ _Start clients using_
 ```
 python 3 peertopeer.py <IP> <PORT_SERVER> <PORT_CLIENT>
 ```
+
 ##Screenshot
 
 ##Building with
+
 *Python v3
 *Module socket
 *Module select
