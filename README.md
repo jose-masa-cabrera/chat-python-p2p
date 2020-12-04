@@ -18,7 +18,7 @@ _Start users using_
 ```
 python3 peertopeer.py <IP> <PORT_SERVER> <PORT_CLIENT>
 ```
-## SCRENSHOT
+## SCREENSHOT
 
 ![](https://github.com/jose-masa-cabrera/chat-python-p2p/blob/main/images/image1.png)
 ![](https://github.com/jose-masa-cabrera/chat-python-p2p/blob/main/images/image2.png)
