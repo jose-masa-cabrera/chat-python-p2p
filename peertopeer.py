@@ -8,18 +8,18 @@ param = len(sys.argv)
 HOST=socket.gethostbyname(sys.argv[1])
 PORT_SERVER=int(sys.argv[2])
 PORT_CLIENT=int(sys.argv[3])
-SOCKET_LIST_CLIENTS = [sys.stdin]#lista para las conexiones entre peers
-SOCKET_LIST_CLIENTS_RECV=[]#lista recibida del servidor de usuarios
+SOCKET_LIST_CLIENTS = [sys.stdin]
+SOCKET_LIST_CLIENTS_RECV=[]
 
 if (param != 4):
-        print ('Numero de argumentos incorrectos  peertopeer.py <IP> <PORT_SERVER> <PORT_CLIENT>')
+        print ('Number of incorrect arguments peertopeer.py <IP> <PORT_SERVER> <PORT_CLIENT>')
         exit()
-# Comprobamos el puerto
+# Check port
 if (PORT_SERVER < 1024) or (PORT_SERVER > 65535):
-        print ('Puerto no valido!!!')
+        print ('Port not valid!!!')
         exit()
 if (PORT_CLIENT < 1024) or (PORT_CLIENT > 65535):
-        print ('Puerto no valido!!!')
+        print ('Port not vali!!!')
         exit()
         
 
@@ -32,47 +32,47 @@ client_address = ('localhost',int(PORT_CLIENT))
 def ad_socket(SOCKET_LIST_CLIENTS_RECV):
     a = len(SOCKET_LIST_CLIENTS_RECV)
     for i in range(a):
-        #socket para conexiones con clientes del chat
+        #socket for the chat client connections
         new_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         new_sock.connect((SOCKET_LIST_CLIENTS_RECV[i][0], SOCKET_LIST_CLIENTS_RECV[i][1]))
-        SOCKET_LIST_CLIENTS.append(new_sock) #se van añadiendo a los clientes
+        SOCKET_LIST_CLIENTS.append(new_sock) 
 
-#-----------Nombre de usuario---------------
-print('***INTRODUCE TU NOMBRE DE USUARIO***')
+#-----------USERNAME---------------
+print('***ENTER YOUR USERNAME***')
 user=input()
 
 
 #-------socket------
-socket_tcp =socket.socket(socket.AF_INET, socket.SOCK_STREAM)#para comunicación P2P es decir para actuar como servidor de otros peers
+socket_tcp =socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 #---------P2P with TCP-------------
-socket_tcp.bind(client_address)#escuchamos solicitudes entrantes en IP y puerto cliente
+socket_tcp.bind(client_address)
 
 
-socket_udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)#para el server
+socket_udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
 #-------client-server With UDP----------
-#enviamos al servidor nuestro numero de puerto
 socket_udp.sendto((str(PORT_CLIENT)).encode("utf-8"),(server_address))
 data, addr = socket_udp.recvfrom(4096)
-SOCKET_LIST_CLIENTS_RECV = json.loads(data.decode())#recibimos la lista del servidor
+SOCKET_LIST_CLIENTS_RECV = json.loads(data.decode())
 
 ad_socket(SOCKET_LIST_CLIENTS_RECV)
-socket_tcp.listen(10)#pongo a la escucha el socket para los peers
-SOCKET_LIST_CLIENTS.append(socket_tcp)#agregamos la nueva conexion a la lista de conexiones
+socket_tcp.listen(10)
+SOCKET_LIST_CLIENTS.append(socket_tcp)
     
 
-print('\n ----Te has unido al grupo-----\n')
+print('\n ----YOU JOINED THE CHAT-----\n')
 
 while 1:
-    #print('función antes del select')
     ready_to_read, ready_to_write, in_error = select.select(SOCKET_LIST_CLIENTS, [], [])
     
-    for parameter in ready_to_read:#socket que estan listos para leer
-        if parameter is socket_tcp:#un peer quiere conectarse a nosotros
-            new_conexion, addr_client = parameter.accept()#acepto la conexión del peer
-            SOCKET_LIST_CLIENTS.append(new_conexion)#agrego la nueva conexión
+    for parameter in ready_to_read:
+        if parameter is socket_tcp:
+            new_conexion, addr_client = parameter.accept()
+            SOCKET_LIST_CLIENTS.append(new_conexion)
             print('Connected with new user')
         else:
-            if parameter is sys.stdin:#se activa el socket del teclado
+            if parameter is sys.stdin:
                 message = input()
                 if message == "exit":
                     socket_udp.sendto((str(PORT_CLIENT)).encode("utf-8"), (server_address))
@@ -81,12 +81,12 @@ while 1:
                 else:
                     m = user + ' at ' + time.strftime("%X") + ' say: ' + message
 
-                for p in SOCKET_LIST_CLIENTS:#recorro la lista de los socket
+                for p in SOCKET_LIST_CLIENTS:
                     if p!=socket_tcp and p!=parameter:
                         p.sendall(m.encode("utf-8"))
-            else: #si recibimos datos
+            else: 
                 data = parameter.recv(1024)
-                if data:#si recibimos algo
+                if data:
                     print(data.decode("utf-8"))
                 else:
                     SOCKET_LIST_CLIENTS.remove(parameter)
