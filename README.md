@@ -1,8 +1,9 @@
-# chat-python-p2p
+# CHAT-PYTHON-P2P
 
 _A Peer-to-Peer chatting application created in Python_
 
-##Features
+## Features
+
 *Server that provides a list of peers that are in the chat 
 *Communication between peers is done through sockets
 *Real time monitoring
