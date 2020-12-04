@@ -37,7 +37,7 @@ while True:
             SOCK_LIST.pop(sock)
             x=1
             break
-    if x is 0:
+    if x == 0:
         print('NEW CLIENT CONNECTED:',port_client)
         #Send list of available sockets
         data_to_send=json.dumps(SOCK_LIST)
