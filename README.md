@@ -1,3 +1,6 @@
+
+
+![](https://github.com/jose-masa-cabrera/chat-python-p2p/blob/main/images/p2p_python.png)
 # CHAT-PYTHON-P2P
 
 _A Peer-to-Peer chatting application created in python_
