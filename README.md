@@ -6,7 +6,7 @@ _A Peer-to-Peer chatting application created in python_
 
 * Server that provides a list of peers that are in the chat.
 * Communication between peers is done through sockets.
-* Real tiem monitoring
+* Real time monitoring
 * Protocol used: UDP
 
 ## GETTING STARTED
